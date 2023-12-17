@@ -31,7 +31,7 @@ This project is a web application for book enthusiasts. It allows users to brows
 
 1. **Clone the repository**
 
-git clone https://github.com/your-repository/book-review-site.git
+git clone https://github.com/Spinaxo/millett-books.git
 cd book-review-site
 
 arduino
@@ -90,5 +90,5 @@ Contributions to this project are welcome! Please fork the repository and submit
 
 ## Contact
 
--   Your Name - your.email@example.com
--   Project Link: https://github.com/your-repository/book-review-site
+-   Aaron - aarondmillett@gmail.com
+-   Project Link: https://github.com/Spinaxo/millett-books

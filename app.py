@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 import random
@@ -81,6 +81,28 @@ def book_page(book_id):
     book = Book.query.get(book_id)
     print (book_id)
     return render_template('book_page_base.html', book=book)
+
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Process the signup form
+        pass
+    return render_template('login_signup_base.html', 
+                           page_title='Signup', 
+                           greeting_message='Create an Account',
+                           instruction_message='Please fill in the details to create an account.',
+                           form_action=url_for('signup'), 
+                           is_signup=True, 
+                           button_text='Sign Up')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        pass
+    return render_template('login_signup_base.html', page_title='Login', greeting_message='Welcome Back!', instruction_message='Please log in to your account.', form_action=url_for('login'), is_signup=False, button_text='Login')
+
 
 
 @app.errorhandler(404)
