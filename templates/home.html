@@ -1,0 +1,19 @@
+{% extends 'home_base.html' %} {% block title %} Millett Books - Home {% endblock %} {% block heading %} Welcome to
+<br />Millett Books{% endblock %} {% block subheading %} A place to keep track of your books, <br />and review ones you
+have read {% endblock %}{% block loginsignup %}
+<button>Join for free</button>
+<button>Log in</button>{% endblock %} {% block contentheading %} Featured books {% endblock %}{% block bookcontent %}
+<div class="book-covers">
+    {% for book in featured_books %}
+    <div class="book-item">
+        <a href="{{ url_for('book_page', book_id=book.book_id) }}">
+            <img
+                src="{{ url_for('static', filename='images/book_covers/' + book.cover_image) }}"
+                alt="{{ book.title }}"
+            />
+        </a>
+        <p>{{ book.title }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

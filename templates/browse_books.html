@@ -1,0 +1,18 @@
+{% extends 'home_base.html' %} {% block title %} Millett Books - Browse Books {% endblock %} {% block heading %} Browse
+Books{% endblock %} {% block subheading %} Browse through our collection {% endblock %} {% block loginsignup %}
+<p></p>
+{% endblock %} {% block contentheading %} Our collection {% endblock %}{% block bookcontent %}
+<div class="book-covers">
+    {% for book in books %}
+    <div class="book-item">
+        <a href="{{ url_for('book_page', book_id=book.book_id) }}">
+            <img
+                src="{{ url_for('static', filename='images/book_covers/' + book.cover_image) }}"
+                alt="{{ book.title }}"
+            />
+        </a>
+        <p>{{ book.title }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
