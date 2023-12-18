@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import IntegrityError
 import bcrypt
 import random
 
@@ -87,8 +88,28 @@ def book_page(book_id):
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        # Process the signup form
-        pass
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        if password != confirm_password:
+            return render_template('error_base.html', error_title='Error', error_message='Passwords do not match.')
+
+        try:
+            hashed_password = generate_password_hash(password)
+
+            new_user = User(username=username, email=email, password_hash=hashed_password)
+            print (new_user)
+
+            # db.session.add(new_user)
+            # db.session.commit()
+
+            return redirect(url_for('login'))
+
+        except IntegrityError:
+            db.session.rollback()
+
+
     return render_template('login_signup_base.html', 
                            page_title='Signup', 
                            greeting_message='Create an Account',
@@ -101,13 +122,18 @@ def signup():
 def login():
     if request.method == 'POST':
         pass
-    return render_template('login_signup_base.html', page_title='Login', greeting_message='Welcome Back!', instruction_message='Please log in to your account.', form_action=url_for('login'), is_signup=False, button_text='Login')
+    return render_template('login_signup_base.html', 
+                            page_title='Login', greeting_message='Welcome Back!', 
+                            instruction_message='Please log in to your account.', 
+                            form_action=url_for('login'), 
+                            is_signup=False, 
+                            button_text='Login')
 
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('error_base.html', error_title='Error: 404 Page not found', error_message="Sorry it doesn't seem like that page exists"), 404
 
 
 

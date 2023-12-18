@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+        <title>{% block title %} {% endblock %}</title>
+    </head>
+    <body>
+        <header>{% include 'navbar.html' %}</header>
+        <div class="greetings">
+            <h2>{{ error_title }}</h2>
+            <p>{{ error_message }}</p>
+            <button onclick="history.back()">Go Back</button>
+        </div>
+    </body>
+</html>
