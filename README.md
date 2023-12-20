@@ -54,23 +54,13 @@ markdown
 -   Create a new PostgreSQL database.
 -   Modify the database URI in `app.py` to point to your new database.
 
-5. **Initialize the database**
-
-python
-
-            from app import db
-            db.create_all()
-            exit()
-
-markdown
-
-6. **Run the application**
+5. **Run the application**
 
 python app.py
 
 markdown
 
-7. **Open your browser** and go to `http://localhost:5000`.
+6. **Open your browser** and go to `http://localhost:5000`.
 
 ## Usage
 
