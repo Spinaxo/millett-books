@@ -2,24 +2,21 @@
 <html>
     <head>
         <title>{{ page_title }}</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/book_page.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/login_signup.css') }}" />
     </head>
     <body>
         <header>{% include 'navbar.html' %}</header>
 
         <main>
-            <div class="greetings">
-                <h2>{{ greeting_message }}</h2>
-                <p>{{ instruction_message }}</p>
-            </div>
-
             <div class="auth-form-container">
                 <form action="{{ form_action }}" method="post">
+                    <h2>{{ greeting_message }}</h2>
+                    <p>{{ instruction_message }}</p>
                     {% if is_signup %}
-                    <input type="text" name="username" placeholder="Username" required />
-                    {% endif %}
                     <input type="email" name="email" placeholder="Email" required />
+                    {% endif %}
+                    <input type="text" name="username" placeholder="Username" required />
                     <input type="password" name="password" placeholder="Password" required />
                     {% if is_signup %}
                     <input type="password" name="confirm_password" placeholder="Confirm Password" required />

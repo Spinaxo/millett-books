@@ -10,24 +10,23 @@
             <li>
                 <a class="nav-link" href="/books">Browse Books</a>
             </li>
-            <!-- Conditionally render Profile and Admin links if user is authenticated -->
-            <!-- if user.is_authenticated -->
+            {% if current_user.is_authenticated %}
             <li>
                 <a class="nav-link" href="/profile">My Profile</a>
             </li>
-            <!-- if user.is_admin -->
+            {% if current_user.is_admin() %}
             <li>
                 <a class="nav-link" href="/admin">Admin Panel</a>
             </li>
-            <!-- endif -->
+            {% endif %}
             <li>
                 <a class="nav-link" href="/logout">Logout</a>
             </li>
-            <!--  else  -->
+            {% else %}
             <li>
                 <a class="nav-link" href="/login">Login</a>
             </li>
-            <!-- endif -->
+            {% endif %}
         </ul>
     </nav>
 </div>

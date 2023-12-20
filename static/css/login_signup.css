@@ -11,6 +11,22 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.auth-form-container h2 {
+    text-align: center;
+    margin: 1px;
+    padding-bottom: 20px;
+    font-size: 200%;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    color: #031a23;
+}
+
+.auth-form-container p {
+    font-family: monospace;
+    color: #031a23;
+    font-size: 120%;
+    margin-top: -20px;
+}
+
 .auth-form-container form {
     display: flex;
     flex-direction: column;
