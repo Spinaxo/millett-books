@@ -38,7 +38,6 @@ git clone https://github.com/Spinaxo/millett-books.git
 python -m venv venv
 source venv/bin/activate # On Windows, use venv\Scripts\activate
 
-markdown
 
 3. **Install required Python packages**
 
