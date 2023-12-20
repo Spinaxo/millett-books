@@ -8,8 +8,8 @@ This project is a web application for book enthusiasts. It allows users to brows
 
 -   **User Authentication**: Users can register, log in, and log out.
 -   **Book Browsing**: Browse through a collection of books.
--   **Book Reviews**: Users can read and submit reviews for each book.
--   **Admin Panel**: Administrators can add, edit, or delete book entries.
+-   **Book Reviews**: Users can read and submit reviews for each book. (Not yet implemented)
+-   **Admin Panel**: Administrators can edit, or delete book entries and users.
 
 ## Technologies Used
 
@@ -17,7 +17,6 @@ This project is a web application for book enthusiasts. It allows users to brows
 -   **Database**: PostgreSQL
 -   **ORM**: SQLAlchemy
 -   **Frontend**: HTML, CSS, JavaScript
--   **Additional Libraries**: Flask-Login, WTForms, etc.
 
 ## Getting Started
 
@@ -32,9 +31,7 @@ This project is a web application for book enthusiasts. It allows users to brows
 1. **Clone the repository**
 
 git clone https://github.com/Spinaxo/millett-books.git
-cd book-review-site
 
-arduino
 
 2. **Set up a virtual environment (optional but recommended)**
 
@@ -45,9 +42,7 @@ markdown
 
 3. **Install required Python packages**
 
-pip install -r requirements.txt
-
-markdown
+pip install flask, sqlaclchemy, bcrypt
 
 4. **Set up PostgreSQL**
 
@@ -58,8 +53,6 @@ markdown
 
 python app.py
 
-markdown
-
 6. **Open your browser** and go to `http://localhost:5000`.
 
 ## Usage
@@ -68,7 +61,7 @@ markdown
 -   Browse the list of books.
 -   View details about each book and read reviews.
 -   Submit your own reviews for books.
--   (Admin) Manage book entries via the admin panel.
+-   (Admin) Manage book entries and users via the admin panel.
 
 ## Contributing
 
