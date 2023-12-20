@@ -60,6 +60,8 @@ class Book(db.Model):
     synopsis = db.Column(db.Text)
     cover_image = db.Column(db.String(255))
 
+    genre = db.relationship("Genre", backref="books")
+
 
 class Review(db.Model):
     __tablename__ = "reviews"
@@ -104,6 +106,65 @@ def book_page(book_id):
     book = Book.query.get(book_id)
     # print(book_id)
     return render_template("book_page_base.html", book=book)
+
+
+@app.route("/admin", methods=["GET", "POST"])
+@login_required
+def admin():
+    if request.method == "POST":
+        pass
+    books = Book.query.all()
+    users = User.query.all()
+    return render_template("admin.html", books=books, users=users)
+
+
+@app.route("/delete-book/<int:book_id>")
+@login_required
+def delete_book(book_id):
+    if current_user.is_admin():
+        book = Book.query.get(book_id)
+        db.session.delete(book)
+        db.session.commit()
+        return redirect(url_for("books"))
+    else:
+        return render_template(
+            "error_base.html", error_title="Error", error_message="Access denied."
+        )
+
+
+@app.route("/delete-user/<int:user_id>")
+@login_required
+def delete_user(user_id):
+    if current_user.is_admin():
+        user = User.query.get(user_id)
+        db.session.delete(user)
+        db.session.commit()
+        return redirect(url_for("admin"))
+    else:
+        return render_template(
+            "error_base.html", error_title="Error", error_message="Access denied."
+        )
+
+
+@app.route("/edit-book/<int:book_id>", methods=["GET", "POST"])
+@login_required
+def edit_book(book_id):
+    book = Book.query.get_or_404(book_id)
+    if request.method == "POST":
+        book.title = request.form["title"]
+        book.author = request.form["author"]
+        book.publication_year = request.form["publication_year"]
+        book.isbn = request.form["isbn"]
+        book.genre_id = request.form["genre_id"]
+        book.synopsis = request.form["synopsis"]
+        book.cover_image = request.form["cover_image"]
+        try:
+            db.session.commit()
+            return redirect(url_for("admin"))
+
+        except IntegrityError:
+            db.session.rollback()
+    return render_template("edit_book.html", book=book)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -194,7 +255,7 @@ def logout():
     db.session.add(user)
     db.session.commit()
     logout_user()
-    return render_template("home.html")
+    return redirect(url_for("home"))
 
 
 @login_manager.user_loader

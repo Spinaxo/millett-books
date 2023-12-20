@@ -3,12 +3,58 @@
     <head>
         <title>{{ page_title }}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/login_signup.css') }}" />
     </head>
     <body>
         <header>{% include 'navbar.html' %}</header>
 
-        <main></main>
+        <main>
+            <div class="admin-tables">
+                <table class="admin-table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publication Year</th>
+                        <th>Genre</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.publication_year }}</td>
+                        <td>{{ book.genre.name }}</td>
+                        <td>
+                            <a href="/edit-book/{{ book.book_id }}">Edit</a> |
+                            <a href="/delete-book/{{ book.book_id }}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                <a href="/edit-user/{{ user.user_id }}">Edit</a> |
+                                <a href="/delete-user/{{ user.user_id }}">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
 
         <footer>{% include 'footer.html' %}</footer>
     </body>

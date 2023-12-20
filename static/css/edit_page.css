@@ -1,4 +1,4 @@
-.auth-form-container {
+.edit-form-container {
     text-align: center;
     padding: 50px;
     margin-top: 10%;
@@ -6,12 +6,11 @@
     background-color: rgba(255, 214, 172);
     border-radius: 15px;
     width: 40%;
-    margin-left: auto;
-    margin-right: auto;
+
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.auth-form-container h2 {
+.edit-form-container h2 {
     text-align: center;
     margin: 1px;
     padding-bottom: 20px;
@@ -20,7 +19,7 @@
     color: #031a23;
 }
 
-.auth-form-container h3 {
+.edit-form-container h3 {
     text-align: center;
     margin: 1px;
     margin-top: 50px;
@@ -30,20 +29,20 @@
     color: #031a23;
 }
 
-.auth-form-container p {
+.edit-form-container p {
     font-family: monospace;
     color: #031a23;
     font-size: 120%;
     margin-top: -20px;
 }
 
-.auth-form-container form {
+.edit-form-container form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.auth-form-container input {
+.edit-form-container input {
     padding: 12px;
     border-radius: 5px;
     border: 1px solid #444;
@@ -52,16 +51,16 @@
     font-size: 16px;
 }
 
-.auth-form-container input::placeholder {
+.edit-form-container input::placeholder {
     color: #fff;
 }
 
-.auth-form-container input:focus {
+.edit-form-container input:focus {
     border-color: #eee2dc;
     outline: none;
 }
 
-.auth-form-container button {
+.edit-form-container button {
     padding: 12px;
     border-radius: 5px;
     border: none;
@@ -71,6 +70,22 @@
     cursor: pointer;
 }
 
-.auth-form-container button:hover {
+.edit-form-container button:hover {
     background-color: #ac3b61;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    margin-top: 300px; /* Adjust to prevent overlapping with the header */
+    height: 600px;
+    gap: 100px;
+}
+
+.book-cover img {
+    max-height: 900px; /* Set a maximum height */
+    border-radius: 15px;
+    border: solid #031a23;
 }

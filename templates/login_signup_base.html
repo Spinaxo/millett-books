@@ -23,6 +23,12 @@
                     {% endif %}
                     <button type="submit">{{ button_text }}</button>
                 </form>
+                {% if not is_signup %}
+                <h3>Don't have an account?</h3>
+                <a href="{{ url_for('signup') }}">
+                    <button>Create one</button>
+                </a>
+                {% endif %}
             </div>
         </main>
 

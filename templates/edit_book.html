@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ page_title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_page.css') }}" />
+    </head>
+    <body>
+        <header>{% include 'navbar.html' %}</header>
+
+        <main>
+            <div class="book-cover">
+                <img
+                    src="{{ url_for('static', filename='images/book_covers/' + book.cover_image) }}"
+                    alt="{{ book.title }}"
+                />
+            </div>
+            <div class="edit-form-container">
+                <form action="{{ form_action }}" method="post">
+                    <h2>Edit - {{ book.title }}</h2>
+                    <p>{{ instruction_message }}</p>
+                    <label>Title</label>
+                    <input type="text" name="title" value="{{ book.title }}" required />
+                    <label>Author</label>
+                    <input type="text" name="author" value="{{ book.author }}" required />
+                    <label>Publication Year</label>
+                    <input type="text" name="publication_year" value="{{ book.publication_year }}" required />
+                    <label>ISBN</label>
+                    <input type="text" name="isbn" value="{{ book.isbn }}" required />
+                    <label>Genre</label>
+                    <input type="text" name="genre_id" value="{{ book.genre_id }}" required />
+                    <label>Synopsis</label>
+                    <textarea type="text" name="synopsis" rows="9" required>{{ book.synopsis }}</textarea>
+                    <label>Cover Image</label>
+                    <input type="text" name="cover_image" value="{{ book.cover_image }}" required />
+                    <button type="submit">Submit changes</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>{% include 'footer.html' %}</footer>
+    </body>
+</html>
