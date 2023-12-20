@@ -16,7 +16,7 @@ This project is a web application for book enthusiasts. It allows users to brows
 -   **Backend**: Flask (Python)
 -   **Database**: PostgreSQL
 -   **ORM**: SQLAlchemy
--   **Frontend**: HTML, CSS, JavaScript
+-   **Frontend**: HTML, CSS
 
 ## Getting Started
 
